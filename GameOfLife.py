@@ -125,12 +125,25 @@ def main():
         #numero de geracoes
         geracoes = 1000
 
-        linhas = recebeInteiro("Enter the number of rows (10-60): ", 10, 60)
+        linhas = recebeInteiro("Digite o número de linhas (10-60): ", 10, 60)
         limpaTela()
-        colunas = recebeInteiro("Enter the number of cols (10-118): ", 10, 118)
+        colunas = recebeInteiro("Digite o número de colunas (10-118): ", 10, 118)
 
-        geracaoAtual = geraGrid(linhas, colunas)
-        proxGeracao = geraGrid(linhas, colunas)
+        # verifica modo aleatorio ou input do usuário
+        tipo = recebeInteiro("Digite <1> para marcação e <2> para aleatório: ", 0, 2)
+
+        if tipo == 1: # input do usuario
+            geracaoAtual = [[0 for coluna in range(colunas)] for linha in range(linhas)]
+            proxGeracao = geraGrid(linhas, colunas)
+            comando = "continuar"
+            while comando.lower() != "sair":
+                linha = recebeInteiro("Digite a linha a ser alterada: ", 1, linhas)
+                coluna = recebeInteiro("Digite a coluna a ser alterada: ", 1, colunas)
+                geracaoAtual[linha - 1][coluna - 1] = 1
+                comando = input("digite <SAIR> para terminar a alteração e <ENTER> para continuar: ")
+        else:# modo aleatorio
+            geracaoAtual = geraGrid(linhas, colunas)
+            proxGeracao = geraGrid(linhas, colunas)
 
         gen = 1
 

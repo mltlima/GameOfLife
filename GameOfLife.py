@@ -1,3 +1,6 @@
+# Game of life - Logica UFRJ
+# Alunos: Miguel Lima Tavares - 119161571
+#         Luiz Bernardo Levenhagen - 111212116
 import time
 import os
 import random
